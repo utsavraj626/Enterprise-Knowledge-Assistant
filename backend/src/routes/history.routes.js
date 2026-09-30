@@ -1,0 +1,13 @@
+import express from "express";
+
+import { getHistory, getSingleHistory } from "../controllers/history.controller.js";
+
+import { verifyJWT } from "../middleware/auth.middleware.js";
+
+const router = express.Router();
+
+router.get( "/", verifyJWT, getHistory );
+
+router.get( "/:historyId", verifyJWT, getSingleHistory );
+
+export default router;
